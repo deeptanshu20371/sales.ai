@@ -51,12 +51,6 @@ Sales.ai is a comprehensive platform for LinkedIn outreach automation that combi
 - **Service Worker** for background processing
 - **Shadow DOM** for isolated UI components
 
-### Development Tools
-- **ESLint** for code linting
-- **Prettier** for code formatting
-- **TypeScript** for type safety
-- **Hot Reload** for fast development
-
 ## Prerequisites
 
 Before running Sales.ai, ensure you have the following installed:
