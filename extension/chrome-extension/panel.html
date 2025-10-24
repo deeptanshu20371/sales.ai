@@ -1,0 +1,100 @@
+<style>
+	:host { all: initial; }
+	*, *::before, *::after { box-sizing: border-box; }
+	.card {
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		width: 280px;
+		border-radius: 16px;
+		overflow: hidden;
+		border: 1px solid var(--gr-border);
+		background: var(--gr-surface);
+		color: var(--gr-foreground);
+		box-shadow: var(--gr-shadow);
+	}
+	/* Theme variables */
+	.card[data-theme="dark"] {
+		--gr-surface: #111827;
+		--gr-foreground: #f8fafc;
+		--gr-border: rgba(0,0,0,0.35);
+		--gr-subtle: #9ca3af;
+		--gr-ok: #34d399;
+		--gr-warn: #f87171;
+		--gr-btn-primary: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+		--gr-btn-primary-hover: linear-gradient(180deg, #7ab2fb 0%, #2b6ae6 100%);
+		--gr-btn-secondary-bg: #1f2937;
+		--gr-code-bg: #0b1220;
+		--gr-code-border: rgba(255,255,255,0.08);
+		--gr-divider: rgba(255,255,255,0.06);
+	}
+	.card[data-theme="light"] {
+		--gr-surface: #fffefc;
+		--gr-foreground: #0f172a;
+		--gr-border: rgba(0,0,0,0.16);
+		--gr-subtle: #4b5563;
+		--gr-ok: #0f766e;
+		--gr-warn: #b91c1c;
+		--gr-btn-primary: linear-gradient(180deg, #8b5cf6 0%, #7c3aed 100%);
+		--gr-btn-primary-hover: linear-gradient(180deg, #9b6bff 0%, #8440f2 100%);
+		--gr-btn-secondary-bg: #f3f4f6;
+		--gr-code-bg: #f3f4f6;
+		--gr-code-border: rgba(0,0,0,0.08);
+		--gr-divider: rgba(0,0,0,0.08);
+	}
+	.ring { box-shadow: 0 0 0 2px rgba(124,58,237,0.25); }
+	.header {
+		padding: 12px 14px;
+		border-bottom: 1px solid var(--gr-divider);
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		justify-content: space-between;
+	}
+	.title { font-weight: 700; font-size: 14px; letter-spacing: -0.01em; }
+	.subtitle { font-size: 12px; color: var(--gr-subtle); }
+	.body { padding: 12px 14px; display: grid; gap: 10px; }
+	.status { font-size: 12px; font-weight: 600; }
+	.status.ok { color: var(--gr-ok); }
+	.status.warn { color: var(--gr-warn); }
+	.actions { display: flex; gap: 8px; }
+	.btn {
+		appearance: none; -webkit-appearance: none;
+		border: none;
+		border-radius: 10px;
+		padding: 10px 12px;
+		font-weight: 600; font-size: 13px;
+		cursor: pointer;
+		transition: background 0.2s ease, transform 0.1s ease;
+	}
+	.btn.primary { background: var(--gr-btn-primary); color: #fff; }
+	.btn.primary:hover { background: var(--gr-btn-primary-hover); }
+	.btn.primary:active { transform: scale(0.99); }
+	.btn.secondary { background: var(--gr-btn-secondary-bg); color: inherit; }
+	.row { display: grid; gap: 6px; }
+	.input { width: 100%; max-width: 100%; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--gr-border); background: var(--gr-surface); color: inherit; }
+	.label { font-size: 12px; color: var(--gr-subtle); }
+	.monospace { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; background: var(--gr-code-bg); color: inherit; padding: 8px; border-radius: 8px; max-height: 140px; overflow: auto; border: 1px solid var(--gr-code-border); white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; max-width: 100%; }
+	.icon-btn { background: transparent; border: 1px solid var(--gr-border); color: inherit; padding: 6px 8px; border-radius: 8px; cursor: pointer; }
+	.icon-btn:hover { background: var(--gr-btn-secondary-bg); }
+</style>
+<div class="card ring" id="gr-card" data-theme="light">
+	<div class="header">
+		<div class="title">Sales.ai</div>
+		<div>
+			<button class="icon-btn" id="gr-theme">Light</button>
+			<button class="icon-btn" id="gr-close">✕</button>
+		</div>
+	</div>
+	<div class="body">
+		<div class="row">
+			<div class="label">Intent</div>
+			<input class="input" id="gr-intent" type="text" placeholder="e.g. intro for partnership, ask for call" />
+		</div>
+		<div class="row">
+			<div class="subtitle">LinkedIn profile detected</div>
+			<div class="status ok" id="gr-status">Ready to generate</div>
+		</div>
+		<div class="actions">
+			<button class="btn primary" id="gr-generate">Generate & Fill</button>
+		</div>
+	</div>
+</div>

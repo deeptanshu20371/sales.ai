@@ -1,0 +1,9 @@
+# Sales.ai monorepo
+# macOS
+.DS_Store
+
+# Python backend
+extension/backend/.env
+extension/backend/venv/
+extension/backend/__pycache__/
+**/*.pyc
